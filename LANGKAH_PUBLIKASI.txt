@@ -1,0 +1,13 @@
+LANGKAH PUBLIKASI UNDANGAN YESAYA & KHARISMA
+
+1. Ekstrak ZIP ini.
+2. Buka https://app.netlify.com/drop
+3. Login atau buat akun Netlify jika diminta.
+4. Tarik folder undangan_yesaya_kharisma ke kotak upload Netlify.
+5. Tunggu sampai selesai.
+6. Netlify akan memberikan link .netlify.app.
+7. Buka link tersebut untuk melihat undangan.
+
+RSVP dan ucapan sudah diarahkan ke Google Apps Script yang Anda buat.
+Musik sudah dimasukkan.
+RSVP maksimal 2 orang.

@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Yesaya & Kharisma — Wedding Invitation</title>
+  <meta name="description" content="Undangan Pernikahan Yesaya Dwi Prasetyo & Kharisma Natali — 19 September 2026">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Playfair+Display:wght@500;600&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <audio id="bgMusic" loop preload="auto">
+    <source src="assets/lagu.mp3" type="audio/mpeg">
+  </audio>
+
+  <div class="cover" id="cover">
+    <div class="cover-pattern"></div>
+    <div class="cover-content">
+      <p class="eyebrow">The Wedding of</p>
+      <h1>Yesaya <span>&</span> Kharisma</h1>
+      <p class="date">19 • 09 • 2026</p>
+      <button class="btn primary" id="openInvitation">Buka Undangan</button>
+      <p class="small">Mohon maaf apabila ada kesalahan penulisan nama dan gelar.</p>
+    </div>
+  </div>
+
+  <main id="main" class="hidden">
+    <section class="hero section">
+      <p class="eyebrow">A Celebration of Love</p>
+      <h2>Yesaya <span>&</span> Kharisma</h2>
+      <p class="script">“Dan di atas semuanya itu: kenakanlah kasih, sebagai pengikat yang mempersatukan dan menyempurnakan.”</p>
+      <p class="verse">Kolose 3:14</p>
+      <div class="ornament">❦</div>
+      <p>Sabtu, 19 September 2026</p>
+    </section>
+
+    <section class="section couple">
+      <p class="eyebrow">Mempelai</p>
+      <div class="couple-grid">
+        <article>
+          <div class="couple-photo"><img src="assets/foto-pengantin.jpg" alt="Yesaya dan Kharisma"></div>
+          <h3>Yesaya Dwi Prasetyo</h3>
+          <p>Putra dari<br><strong>Bpk. Riyadi</strong> & <strong>Ibu. Sriyatmi</strong></p>
+        </article>
+        <div class="amp">&</div>
+        <article>
+          <div class="couple-photo"><img src="assets/foto-pengantin.jpg" alt="Yesaya dan Kharisma"></div>
+          <h3>Kharisma Natali</h3>
+          <p>Putri dari<br><strong>Bpk. Yusup Sunarto</strong> & <strong>Ibu. Ninis Setiyani</strong></p>
+        </article>
+      </div>
+      <p class="note">Dengan penuh sukacita, kami mengundang Bapak/Ibu/Saudara/i untuk hadir dan menjadi bagian dari hari bahagia kami.</p>
+    </section>
+
+    <section class="section events">
+      <p class="eyebrow">Save the Date</p>
+      <h2>Rangkaian Acara</h2>
+      <div class="event-card">
+        <div class="event-icon">✦</div>
+        <h3>Pemberkatan Pernikahan</h3>
+        <p class="event-date">Sabtu, 19 September 2026</p>
+        <p class="event-time">09.00 WIB</p>
+        <p>GBT KAO Tanah Mas</p>
+      </div>
+      <div class="event-card">
+        <div class="event-icon">✦</div>
+        <h3>Resepsi</h3>
+        <p class="event-date">Sabtu, 19 September 2026</p>
+        <p class="event-time">13.00 WIB</p>
+        <p>Rumah Mempelai Wanita<br>Perumahan Puri Delta Asri 9<br>Blok K6 No. 12B, Kaliwungu Selatan, Kab. Kendal</p>
+        <a class="btn outline" href="https://maps.app.goo.gl/tWXxWMQSRvHbmwc77" target="_blank" rel="noopener">Buka Google Maps</a>
+      </div>
+    </section>
+
+    <section class="section countdown-section">
+      <p class="eyebrow">Counting the Days</p>
+      <h2>Menuju Hari Bahagia</h2>
+      <div class="countdown" id="countdown">
+        <div><strong id="days">0</strong><span>Hari</span></div>
+        <div><strong id="hours">0</strong><span>Jam</span></div>
+        <div><strong id="minutes">0</strong><span>Menit</span></div>
+        <div><strong id="seconds">0</strong><span>Detik</span></div>
+      </div>
+    </section>
+
+    <section class="section rsvp">
+      <p class="eyebrow">RSVP</p>
+      <h2>Konfirmasi Kehadiran</h2>
+      <p>Mohon konfirmasi kehadiran. Maksimal <strong>2 orang</strong> untuk setiap undangan.</p>
+      <form id="rsvpForm">
+        <label>Nama
+          <input id="guestName" required placeholder="Nama Anda">
+        </label>
+        <label>Kehadiran
+          <select id="attendance" required>
+            <option value="">Pilih...</option>
+            <option value="Hadir">Hadir</option>
+            <option value="Tidak Hadir">Tidak Hadir</option>
+          </select>
+        </label>
+        <label>Jumlah Tamu
+          <select id="guestCount" required>
+            <option value="1">1 orang</option>
+            <option value="2">2 orang</option>
+          </select>
+        </label>
+        <button class="btn primary" type="submit">Kirim RSVP</button>
+      </form>
+      <div id="rsvpMessage" class="message"></div>
+    </section>
+
+    <section class="section wishes">
+      <p class="eyebrow">Your Love & Wishes</p>
+      <h2>Ucapan untuk Mempelai</h2>
+      <form id="wishForm">
+        <label>Nama
+          <input id="wishName" required placeholder="Nama Anda">
+        </label>
+        <label>Ucapan
+          <textarea id="wishText" required rows="5" placeholder="Tulis doa dan ucapan untuk Yesaya & Kharisma..."></textarea>
+        </label>
+        <button class="btn primary" type="submit">Kirim Ucapan</button>
+      </form>
+      <div id="wishMessage" class="message"></div>
+      <div id="wishList" class="wish-list"><div class="wish"><p>Ucapan yang masuk akan tampil di sini setelah halaman dihubungkan ke database online.</p></div></div>
+    </section>
+
+    <footer>
+      <div class="ornament">❦</div>
+      <h2>Yesaya & Kharisma</h2>
+      <p>Terima kasih atas doa, kasih, dan kehadiran Anda.</p>
+      <p class="small">19 September 2026</p>
+    </footer>
+  </main>
+
+  <button id="musicToggle" class="music-toggle hidden" aria-label="Putar atau jeda musik">♫</button>
+  <script src="script.js"></script>
+</body>
+</html>
