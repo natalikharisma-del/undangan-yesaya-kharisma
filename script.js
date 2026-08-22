@@ -52,7 +52,7 @@ document.getElementById("rsvpForm").addEventListener("submit",async e=>{
   if(count>2){msg.textContent="Maksimal 2 orang.";return}
   msg.textContent="Mengirim...";
   try{
-    const out=await post({action:"rsvp",name,attendance,count});
+    const out=await post({action:"rsvp",nama:name,kehadiran:attendance,jumlah:count});
     msg.textContent=out.ok?"Terima kasih. RSVP Anda sudah tersimpan.":out.message;
     if(out.ok)e.target.reset();
   }catch(err){msg.textContent=err.message}
