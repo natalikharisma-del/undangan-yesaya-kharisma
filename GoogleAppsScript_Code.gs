@@ -14,8 +14,39 @@ function getOrCreateSheet_(ss, name, headers) {
   return sh;
 }
 
-function doGet() {
-  return json_({ ok: true, message: "Undangan Yesaya & Kharisma API aktif." });
+function doGet(e) {
+  const action = String(e?.parameter?.action || "").trim();
+  const ss = SpreadsheetApp.getActiveSpreadsheet();
+
+  if (action === "ucapan") {
+    const sheet = ss.getSheetByName(SHEET_NAME_WISHES);
+
+    if (!sheet) {
+      return json_({
+        ok: false,
+        message: "Sheet ucapan tidak ditemukan."
+      });
+    }
+
+    const values = sheet.getDataRange().getValues();
+
+    const data = values.slice(1).map(row => ({
+      timestamp: row[0],
+      nama: row[1],
+      ucapan: row[2]
+    }));
+
+    return json_({
+      ok: true,
+      type: "ucapan",
+      data: data
+    });
+  }
+
+  return json_({
+    ok: true,
+    message: "Undangan Yesaya & Kharisma API aktif."
+  });
 }
 
 function doPost(e) {
