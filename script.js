@@ -65,7 +65,7 @@ document.getElementById("wishForm").addEventListener("submit",async e=>{
   const wish=document.getElementById("wishText").value.trim();
   msg.textContent="Mengirim...";
   try{
-    const out=await post({action:"ucapan",name:name,ucapan:wish});
+    const out=await post({action:"ucapan",nama:name,ucapan:wish});
     msg.textContent=out.ok?"Terima kasih atas ucapan dan doanya.":out.message;
     if(out.ok)e.target.reset();
   }catch(err){msg.textContent=err.message}
