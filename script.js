@@ -3,7 +3,7 @@
 // ===============================
 // Setelah Google Apps Script dideploy sebagai Web App,
 // tempel URL-nya di bawah ini.
-const API_URL = "https://script.google.com/macros/s/AKfycbzp_BqY-JZzCFYyx-vuOgfBN_zB7zbtOHWv-TchnRp6SwWarQDH4NWqg30MyEEy3rAw/exec";
+const API_URL = "https://script.google.com/macros/s/AKfycbx8Sv2Twq5taLZa1f_4wC0GRYc0noZ2Qi7L6j2VKWBAUicgmuCOhSbgdYUZ8Etl19VL/exec";
 
 const cover=document.getElementById("cover");
 const main=document.getElementById("main");
