@@ -5,6 +5,42 @@
 // tempel URL-nya di bawah ini.
 const API_URL = "https://script.google.com/macros/s/AKfycbx8Sv2Twq5taLZa1f_4wC0GRYc0noZ2Qi7L6j2VKWBAUicgmuCOhSbgdYUZ8Etl19VL/exec";
 
+async function loadWishes() {
+  const list = document.getElementById("wishList");
+  if (!list) return;
+
+  try {
+    const response = await fetch(API_URL + "?action=ucapan");
+    const result = await response.json();
+
+    if (!result.ok) {
+      throw new Error(result.message || "Gagal memuat ucapan.");
+    }
+
+    list.innerHTML = "";
+
+    result.data.slice().reverse().forEach(item => {
+      const box = document.createElement("div");
+      box.className = "wish";
+
+      const name = document.createElement("strong");
+      name.textContent = item.nama;
+
+      const message = document.createElement("p");
+      message.textContent = item.ucapan;
+
+      box.appendChild(name);
+      box.appendChild(message);
+      list.appendChild(box);
+    });
+
+  } catch (error) {
+    list.innerHTML = "<p>Ucapan belum dapat dimuat.</p>";
+  }
+}
+
+document.addEventListener("DOMContentLoaded", loadWishes);
+
 const cover=document.getElementById("cover");
 const main=document.getElementById("main");
 const music=document.getElementById("bgMusic");
@@ -52,7 +88,7 @@ document.getElementById("rsvpForm").addEventListener("submit",async e=>{
   if(count>2){msg.textContent="Maksimal 2 orang.";return}
   msg.textContent="Mengirim...";
   try{
-    const out=await post({action:"rsvp",nama:name,kehadiran:attendance,jumlah:count});
+    const out=await post({action:"rsvp",name:name,attendance:attendance,count:count});
     msg.textContent=out.ok?"Terima kasih. RSVP Anda sudah tersimpan.":out.message;
     if(out.ok)e.target.reset();
   }catch(err){msg.textContent=err.message}
@@ -65,7 +101,7 @@ document.getElementById("wishForm").addEventListener("submit",async e=>{
   const wish=document.getElementById("wishText").value.trim();
   msg.textContent="Mengirim...";
   try{
-    const out=await post({action:"ucapan",nama:name,ucapan:wish});
+    const out=await post({action:"wish",name:name,wish:wish});
     msg.textContent=out.ok?"Terima kasih atas ucapan dan doanya.":out.message;
     if(out.ok)e.target.reset();
   }catch(err){msg.textContent=err.message}
