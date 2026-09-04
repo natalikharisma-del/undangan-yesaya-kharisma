@@ -55,21 +55,37 @@ function doPost(e) {
     const action = String(p.action || "").trim();
     const ss = SpreadsheetApp.getActiveSpreadsheet();
 
-    if (action === "rsvp") {
-      const name = clean_(p.name, 120);
-      const attendance = clean_(p.attendance, 30);
-      const count = Number(p.count);
+      if (action === "rsvp") {
+  const name = clean(p.name, 120);
+  const attendance = clean(p.attendance, 30);
+  const count = Number(p.count);
+  const event = clean(p.event, 30);
 
-      if (!name) throw new Error("Nama wajib diisi.");
-      if (!["Hadir","Tidak Hadir"].includes(attendance)) throw new Error("Pilihan kehadiran tidak valid.");
-      if (!Number.isInteger(count) || count < 1 || count > 2) {
-        throw new Error("Jumlah tamu maksimal 2 orang.");
-      }
+  if (!name) throw new Error("Nama wajib diisi.");
+  if (!["Hadir", "Tidak Hadir"].includes(attendance)) {
+    throw new Error("Pilihan kehadiran tidak valid.");
+  }
+  if (!["Resepsi", "Ngunduh Mantu"].includes(event)) {
+    throw new Error("Silakan pilih acara yang akan dihadiri.");
+  }
+  if (!Number.isInteger(count) || count < 1 || count > 2) {
+    throw new Error("Jumlah tamu maksimal 2 orang.");
+  }
 
-      const sh = getOrCreateSheet_(ss, SHEET_NAME_RSVP, ["Timestamp","Nama","Kehadiran","Jumlah Tamu"]);
-      sh.appendRow([new Date(), name, attendance, count]);
-      return json_({ ok:true, type:"rsvp", message:"RSVP berhasil disimpan." });
-    }
+  const sh = getOrCreateSheet(
+    ss,
+    SHEET_NAME_RSVP,
+    ["Timestamp", "Nama", "Kehadiran", "Jumlah Tamu", "Acara"]
+  );
+
+  sh.appendRow([new Date(), name, attendance, count, event]);
+
+  return json_({
+    ok: true,
+    type: "rsvp",
+    message: "RSVP berhasil disimpan."
+  });
+}
 
     if (action === "wish") {
       const name = clean_(p.name, 120);
