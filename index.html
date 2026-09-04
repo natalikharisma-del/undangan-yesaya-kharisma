@@ -165,7 +165,7 @@
     </section>
     <section class="section rsvp">
       <p class="eyebrow">RSVP</p>
-      <h2>Konfirmasi Kehadiran Resepsi</h2>
+      <h2>Konfirmasi Kehadiran</h2>
       <p>Mohon konfirmasi kehadiran. Maksimal <strong>2 orang</strong> untuk setiap undangan.</p>
       <form id="rsvpForm">
         <label>Nama
@@ -184,6 +184,13 @@
             <option value="2">2 orang</option>
           </select>
         </label>
+        <label>Acara yang akan dihadiri
+  <select id="eventChoice" required>
+    <option value="">Pilih Acara...</option>
+    <option value="Resepsi">Resepsi</option>
+    <option value="Ngunduh Mantu">Ngunduh Mantu</option>
+  </select>
+</label>
         <button class="btn primary" type="submit">Kirim RSVP</button>
       </form>
       <div id="rsvpMessage" class="message"></div>
