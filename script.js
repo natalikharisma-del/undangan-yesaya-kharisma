@@ -84,11 +84,12 @@ document.getElementById("rsvpForm").addEventListener("submit",async e=>{
   const msg=document.getElementById("rsvpMessage");
   const name=document.getElementById("guestName").value.trim();
   const attendance=document.getElementById("attendance").value;
+  const eventChoice=document.getElementById("eventChoice").value;
   const count=Number(document.getElementById("guestCount").value);
   if(count>2){msg.textContent="Maksimal 2 orang.";return}
   msg.textContent="Mengirim...";
   try{
-    const out=await post({action:"rsvp",name:name,attendance:attendance,count:count});
+    const out=await post({action:"rsvp",name:name,attendance:attendance,event:eventChoice,count:count});
     msg.textContent=out.ok?"Terima kasih. RSVP Anda sudah tersimpan.":out.message;
     if(out.ok)e.target.reset();
   }catch(err){msg.textContent=err.message}
