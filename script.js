@@ -107,3 +107,10 @@ document.getElementById("wishForm").addEventListener("submit",async e=>{
     if(out.ok)e.target.reset();
   }catch(err){msg.textContent=err.message}
 });
+// NAMA TAMU DARI LINK
+const guestNameDisplay = document.getElementById("guestNameDisplay");
+const guestName = new URLSearchParams(window.location.search).get("to");
+
+if (guestNameDisplay) {
+  guestNameDisplay.textContent = guestName || "Tamu Undangan";
+}
