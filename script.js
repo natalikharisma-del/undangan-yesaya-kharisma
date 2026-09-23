@@ -57,7 +57,7 @@ toggle.addEventListener("click",async()=>{
   else{music.pause();toggle.textContent="▶"}
 });
 
-const target=new Date("2026-09-19T09:00:00+07:00").getTime();
+const target=new Date("2026-09-27T12:00:00+07:00").getTime();
 setInterval(()=>{
   let d=Math.max(0,target-Date.now());
   let days=Math.floor(d/86400000); d%=86400000;
